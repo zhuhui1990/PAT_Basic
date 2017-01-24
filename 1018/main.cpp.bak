@@ -1,0 +1,40 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+	int n;
+	cin>>n;
+	char a,b;
+	int draw=0;
+	int bwin=0,cwin=0,jwin=0;
+	int bwin1=0,cwin1=0,jwin1=0;
+	int blose=0,close=0,jlose=0;
+	for(int i=0;i<n;++i){
+		cin>>a>>b;
+		if(a=='B'){
+			if(b=='B')	++draw;
+			else if(b=='C')	++bwin;
+			else if(b=='J')	++blose,++jwin1; 
+		}
+		if(a=='C'){
+			if(b=='B') ++close,++bwin1;
+			if(b=='C') ++draw;
+			if(b=='J') ++cwin;
+		}
+		if(a=='J'){
+			if(b=='B') ++jwin;
+			if(b=='C') ++jlose,++cwin1;
+			if(b=='J') ++draw;
+		}
+	}
+	cout<<bwin+cwin+jwin<<" "<<draw<<" "<<blose+close+jlose<<endl;
+	cout<<blose+close+jlose<<" "<<draw<<" "<<bwin+cwin+jwin<<endl;
+	if(bwin>=cwin && bwin>=jwin) 	cout<<"B ";
+	else if(cwin>bwin && cwin>=jwin)	cout<<"C ";
+	else if(jwin>cwin && jwin>bwin) 	cout<<"J ";
+	
+	if(bwin1>=cwin1 && bwin1>=jwin1) 	cout<<"B ";
+	else if(cwin1>bwin1 && cwin1>=jwin1)	cout<<"C ";
+	else if(jwin1>cwin1 && jwin1>bwin1) 	cout<<"J ";
+}	

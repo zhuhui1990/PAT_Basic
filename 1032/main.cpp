@@ -1,0 +1,24 @@
+#include <iostream>
+#include <unordered_map>
+
+using namespace std;
+
+int main(){
+	unordered_map<int,int> hashtable;
+	int n;
+	cin>>n;
+	int a,b;
+	for(int i=0;i<n;++i){
+		cin>>a>>b;
+		hashtable[a]+=b;
+	}
+	int max=0,maxloc=0;
+	for(auto it=hashtable.begin();it!=hashtable.end();++it){
+		if(it->second>max){
+			max=it->second;
+			maxloc=it->first;
+		}
+	}
+	cout<<maxloc<<" "<<max<<endl;
+	return 0;
+}

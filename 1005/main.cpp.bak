@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+#include <unordered_set> 
+
+using namespace std;
+
+void coveredNums(int a,unordered_set<int>& set){
+	while(a>1){
+		if(a%2!=0){
+			a *= 3;
+			a += 1;
+			a /= 2;
+		}else{
+			a /= 2;
+		}
+		set.insert(a);
+	}
+}
+
+int main(){
+	int n;
+	cin>>n;
+	vector<int> nums;
+	int temp;
+	unordered_set<int> set;
+	for(int i=0;i<n;++i){
+		cin>>temp;
+		nums.push_back(temp);
+		coveredNums(temp,set);
+	}
+	vector<int> res;
+	for(const auto &c:nums){
+		if(set.find(c)==set.end()){
+			res.push_back(c);
+		}
+	}
+	
+	sort(res.begin(),res.end(),[](int a,int b){return a>b;});
+	
+	for(int i=0;i<res.size()-1;++i){
+		cout<<res[i]<<" ";
+	}
+	cout<<res[res.size()-1]<<endl;
+	return 0;
+}

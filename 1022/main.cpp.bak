@@ -1,0 +1,21 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(){
+	ulong a,b,d;
+	cin>>a>>b>>d;
+	ulong c=a+b;
+	vector<int> vec;
+	if(c==0){
+	}
+	while(c>0){
+		vec.push_back(c%d);
+		c /= d;
+	}
+	for(int i=vec.size()-1;i>=0;--i){
+		cout<<vec[i];
+	}
+	cout<<endl;
+	return 0;
+}

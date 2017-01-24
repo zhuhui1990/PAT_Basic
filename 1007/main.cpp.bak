@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isprime(const int& a){
+	if (a==1)
+		return false;
+	bool res=true;
+	for(int i=1;i<=sqrt(a);++i){
+		if(a%i==0){
+			res=false;
+			break;
+		}
+	}
+	return res;
+}
+
+int main(){
+	int n;
+	while(cin>>n){
+		int cnt=0;
+		for(int i=3;i<=n-2;++i){
+			if(isprime(i))
+				if(isprime(i+2))
+					++cnt;
+		}
+		cout<<cnt<<endl;
+	}
+	return 0;
+}

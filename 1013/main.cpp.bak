@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+bool isprime(const int& n){
+	if(n==1)
+		return false;
+	for(int i=2;i<sqrt(n);++i){
+		if(n%i==0){
+			return false;
+		}
+	}
+	return true;
+}
+
+int main(){
+	int m,n;
+	cin>>m>>n;
+	int cnt=0;
+	for(int i=2;;++i){
+		if(isprime(i)) {
+			++cnt;
+			if(cnt>=m && cnt<n)
+				if((cnt-m)%10!=9)
+					cout<<i<<" ";
+				else
+					cout<<i<<endl;
+			if(cnt==n){
+				cout<<i<<endl;
+				break;
+			}
+		}
+	}
+	return 0;
+}
